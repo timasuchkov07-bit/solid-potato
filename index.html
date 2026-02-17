@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой RP Сервер | GTA 5 Role Play</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .server-status {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .server-status .online {
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(103, 126, 234, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(103, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2em;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .download-section h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(103, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(103, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #333;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .server-info {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .ip-box {
+            background: #333;
+            color: #4ade80;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px dashed #667eea;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .ip-box:hover {
+            background: #444;
+            transform: scale(1.02);
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        .ping-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #4ade80;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4ade80;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 MY RP SERVER</h1>
+            <p>Лучший Role Play проект на GTA 5</p>
+            <div class="server-status">
+                <span class="ping-indicator"></span>
+                <span id="serverOnline">Проверка статуса...</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Уникальный транспорт</h3>
+                    <p>Более 100 кастомных машин с реалистичной физикой и тюнингом</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Система недвижимости</h3>
+                    <p>Покупай дома, квартиры и гаражи. Обустраивай по своему вкусу</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Работы и бизнес</h3>
+                    <p>Более 20 официальных работ и возможность открыть свой бизнес</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👮</div>
+                    <h3>Госструктуры</h3>
+                    <p>Работа в полиции, скорой помощи или на государственной службе</p>
+                </div>
+            </div>
+
+            <div class="download-section">
+                <h2>🚀 Начать играть</h2>
+                <p>Скачай наш лаунчер и погрузись в мир RP</p>
+                <div class="download-buttons">
+                    <a href="#" class="btn btn-primary" onclick="downloadLauncher()">
+                        📥 Скачать лаунчер
+                    </a>
+                    <button class="btn btn-secondary" onclick="copyServerIP()">
+                        📋 Копировать IP сервера
+                    </button>
+                </div>
+                <div class="ip-box" onclick="copyServerIP()" id="serverIP">
+                    123.45.67.89:30120
+                </div>
+                <p style="color: #666; margin-top: 10px;">👆 Нажми на IP чтобы скопировать</p>
+            </div>
+
+            <div class="server-info">
+                <h3 style="text-align: center; margin-bottom: 20px;">📊 Информация о сервере</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Версия</div>
+                        <div class="info-value">1.0.0</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Игроков онлайн</div>
+                        <div class="info-value" id="playersOnline">0/100</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Дата открытия</div>
+                        <div class="info-value">2024</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Режим</div>
+                        <div class="info-value">Hard RP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 My RP Server. Все права защищены.</p>
+            <p>GTA 5 и FiveM являются товарными знаками их соответствующих владельцев.</p>
+            <p>Связь с нами: <a href="mailto:support@myserver.ru">support@myserver.ru</a> | <a href="#" onclick="openDiscord()">Discord</a></p>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        Текст уведомления
+    </div>
+
+    <script>
+        // Конфигурация твоего сервера - ИЗМЕНИ ЭТИ ДАННЫЕ!
+        const SERVER_CONFIG = {
+            ip: '123.45.67.89:30120',      // Твой IP и порт сервера
+            name: 'My RP Server',
+            maxPlayers: 100,
+            discord: 'https://discord.gg/tvoyserver', // Твой Discord
+            launcherUrl: '#',                // Ссылка на лаунчер
+            apiUrl: 'http://' + window.location.hostname + ':30120/info.json' // для проверки онлайна
+        };
+
+        // Функция показа уведомлений
+        function showNotification(message, isError = false) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            if (isError) {
+                notification.classList.add('error');
+            } else {
+                notification.classList.remove('error');
+            }
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Копирование IP сервера
+        function copyServerIP() {
+            navigator.clipboard.writeText(SERVER_CONFIG.ip).then(() => {
+                showNotification('✅ IP сервера скопирован!');
+            }).catch(() => {
+                showNotification('❌ Ошибка при копировании', true);
+            });
+        }
+
+        // Скачивание лаунчера
+        function downloadLauncher() {
+            if (SERVER_CONFIG.launcherUrl === '#') {
+                showNotification('🔧 Ссылка на лаунчер появится позже', true);
+            } else {
+                window.location.href = SERVER_CONFIG.launcherUrl;
+            }
+        }
+
+        // Открыть Discord
+        function openDiscord() {
+            if (SERVER_CONFIG.discord === '#') {
+                showNotification('🔧 Discord сервер появится позже', true);
+            } else {
+                window.open(SERVER_CONFIG.discord, '_blank');
+            }
+        }
+
+        // Проверка статуса сервера
+        async function checkServerStatus() {
+            const serverOnlineElement = document.getElementById('serverOnline');
+            const playersOnlineElement = document.getElementById('playersOnline');
+            
+            try {
+                // Пробуем получить информацию с сервера
+                const response = await fetch(SERVER_CONFIG.apiUrl, {
+                    method: 'GET',
+                    mode: 'no-cors', // Это может ограничить получение данных
+                    timeout: 5000
+                });
+                
+                // Если сервер отвечает
+                serverOnlineElement.innerHTML = '<span class="online">🟢 Сервер работает</span>';
+                
+                // Пытаемся получить количество игроков (если API поддерживает)
+                try {
+                    const data = await response.json();
+                    if (data && data.players) {
+                        playersOnlineElement.textContent = `${data.players}/${SERVER_CONFIG.maxPlayers}`;
+                    }
+                } catch {
+                    playersOnlineElement.textContent = `?/${SERVER_CONFIG.maxPlayers}`;
+                }
+                
+            } catch (error) {
+                // Если сервер не отвечает
+                serverOnlineElement.innerHTML = '🔴 Сервер не отвечает';
+                playersOnlineElement.textContent = `?/${SERVER_CONFIG.maxPlayers}`;
+                
+                // Показываем предупреждение только если это не локальный тест
+                if (SERVER_CONFIG.ip !== '123.45.67.89:30120') {
+                    console.log('Сервер временно недоступен');
+                }
+            }
+        }
+
+        // Обновление статуса каждые 30 секунд
+        setInterval(checkServerStatus, 30000);
+
+        // Проверка при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            // Обновляем IP на странице
+            document.getElementById('serverIP').textContent = SERVER_CONFIG.ip;
+            
+            // Проверяем статус
+            checkServerStatus();
+            
+            // Приветственное сообщение
+            setTimeout(() => {
+                if (SERVER_CONFIG.ip === '123.45.67.89:30120') {
+                    showNotification('⚙️ Не забудь изменить IP сервера в коде!');
+                }
+            }, 1000);
+        });
+
+        // Обработка клика по IP
+        document.getElementById('serverIP').addEventListener('click', copyServerIP);
+
+        // Добавляем красивый эффект при наведении на карточки
+        const cards = document.querySelectorAll('.feature-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Динамическое изменение заголовка страницы
+        document.title = `${SERVER_CONFIG.name} | GTA 5 Role Play`;
+
+        // Эффект печати в консоли
+        console.log('%c🚀 Сервер готов к работе!', 'color: #4ade80; font-size: 16px; font-weight: bold;');
+        console.log('%c📌 IP сервера: ' + SERVER_CONFIG.ip, 'color: #667eea; font-size: 14px;');
+    </script>
+</body>
+</html>
