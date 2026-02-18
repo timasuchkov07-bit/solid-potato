@@ -161,28 +161,79 @@
             color: #fff;
         }
 
-        /* Новая кнопка Telegram */
-        .telegram-btn {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 10px 22px;
-            border-radius: 30px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+        /* Новая кнопка Telegram с анимацией */
+.telegram-btn {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 22px;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    /* Мягкая пульсация */
+    animation: softPulse 2s infinite;
+    z-index: 1;
+}
 
-        .telegram-btn:hover {
-            background: rgba(0, 0, 0, 0.7);
-            border-color: #ff4d6d;
-        }
+/* Анимация для иконки самолётика */
+.telegram-btn::before {
+    content: '✈️';
+    display: inline-block;
+    animation: flyAround 3s infinite;
+    filter: drop-shadow(0 0 5px #ff4d6d);
+    font-size: 14px;
+}
+
+/* Ключевые кадры для пульсации кнопки */
+@keyframes softPulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 77, 109, 0.3);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+        border-color: #ff4d6d;
+    }
+}
+
+/* Ключевые кадры для полёта самолётика */
+@keyframes flyAround {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(3px) translateY(-2px) rotate(5deg);
+    }
+    50% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateX(-3px) translateY(2px) rotate(-5deg);
+    }
+    100% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+    }
+}
+
+/* Эффект при наведении */
+.telegram-btn:hover {
+    animation: none; /* Отключаем пульсацию */
+    background: rgba(0, 0, 0, 0.7);
+    border-color: #ff4d6d;
+    transform: scale(1.05);
+}
+
+.telegram-btn:hover::before {
+    animation: none; /* Отключаем полёт самолётика */
+}
 
         .donate-btn {
             background: rgba(0, 0, 0, 0.4);
@@ -713,3 +764,4 @@
     </script>
 </body>
 </html>
+
