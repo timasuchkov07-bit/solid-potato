@@ -13,14 +13,12 @@
         }
 
         body {
-            background-color: #0a0505;
-            color: #ffffff;
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Фоновое изображение (Nagasaki) */
+        /* Фоновое изображение в полную силу */
         body::before {
             content: '';
             position: fixed;
@@ -31,12 +29,11 @@
             background-image: url('https://i.ibb.co/4T3X8qM/nagasaki.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0.25;
-            z-index: -1;
-            filter: grayscale(0.3);
+            background-repeat: no-repeat;
+            z-index: -2;
         }
 
-        /* Затемнение с красным оттенком */
+        /* Легкое затемнение для читаемости текста (по желанию, можешь убрать) */
         body::after {
             content: '';
             position: fixed;
@@ -44,7 +41,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(20,0,0,0.98) 0%, rgba(40,5,5,0.98) 100%);
+            background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный слой */
             z-index: -1;
         }
 
@@ -57,6 +54,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            color: #fff;
         }
 
         /* Навигация */
@@ -66,7 +64,7 @@
             align-items: center;
             margin-bottom: 80px;
             padding-bottom: 15px;
-            border-bottom: 1px solid rgba(196, 30, 58, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .logo {
@@ -75,7 +73,7 @@
             letter-spacing: 4px;
             color: #fff;
             text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(196, 30, 58, 0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .nav-links {
@@ -85,7 +83,7 @@
         }
 
         .nav-links a {
-            color: #d0a0a0;
+            color: #fff;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
@@ -93,6 +91,7 @@
             letter-spacing: 1.5px;
             transition: color 0.3s;
             cursor: pointer;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .nav-links a:hover {
@@ -112,8 +111,8 @@
         }
 
         .lang-btn {
-            background: rgba(196, 30, 58, 0.1);
-            border: 1px solid rgba(196, 30, 58, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: #fff;
             padding: 8px 18px;
             border-radius: 30px;
@@ -125,10 +124,11 @@
             align-items: center;
             gap: 8px;
             transition: all 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .lang-btn:hover {
-            background: rgba(196, 30, 58, 0.2);
+            background: rgba(0, 0, 0, 0.7);
             border-color: #ff4d6d;
         }
 
@@ -137,8 +137,9 @@
             position: absolute;
             top: 100%;
             right: 0;
-            background: #1a0a0a;
-            border: 1px solid rgba(196, 30, 58, 0.3);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
             margin-top: 5px;
             min-width: 120px;
@@ -152,7 +153,7 @@
         .lang-dropdown a {
             display: block;
             padding: 10px 20px;
-            color: #d0a0a0;
+            color: #fff;
             text-decoration: none;
             font-size: 13px;
             text-transform: uppercase;
@@ -160,12 +161,12 @@
         }
 
         .lang-dropdown a:hover {
-            background: rgba(196, 30, 58, 0.2);
-            color: #ff4d6d;
+            background: rgba(255, 77, 109, 0.3);
+            color: #fff;
         }
 
         .donate-btn {
-            background: rgba(196, 30, 58, 0.1);
+            background: rgba(0, 0, 0, 0.5);
             padding: 10px 22px;
             border-radius: 30px;
             color: #fff;
@@ -173,12 +174,13 @@
             font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
-            border: 1px solid rgba(196, 30, 58, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .donate-btn:hover {
-            background: rgba(196, 30, 58, 0.25);
+            background: rgba(0, 0, 0, 0.7);
             border-color: #ff4d6d;
         }
 
@@ -202,7 +204,7 @@
             color: #fff;
             margin-bottom: 15px;
             letter-spacing: -4px;
-            text-shadow: 0 0 30px rgba(196, 30, 58, 0.4);
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.5);
         }
 
         .online-section {
@@ -214,22 +216,23 @@
 
         .online-label {
             font-size: 18px;
-            color: #d0a0a0;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 2.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .online-number {
             font-size: 72px;
             font-weight: 700;
             color: #ff4d6d;
-            text-shadow: 0 0 40px rgba(196, 30, 58, 0.6);
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.8), 2px 2px 4px rgba(0,0,0,0.5);
             line-height: 1;
         }
 
         .season-pass {
-            background: rgba(196, 30, 58, 0.05);
-            border: 1px solid rgba(196, 30, 58, 0.2);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 12px 28px;
             display: inline-block;
             margin-bottom: 50px;
@@ -237,14 +240,14 @@
             font-size: 15px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #d0a0a0;
+            color: #fff;
             transition: all 0.3s;
             cursor: pointer;
             backdrop-filter: blur(5px);
         }
 
         .season-pass:hover {
-            background: rgba(196, 30, 58, 0.15);
+            background: rgba(0, 0, 0, 0.7);
             border-color: #ff4d6d;
         }
 
@@ -261,7 +264,7 @@
         }
 
         .btn-download {
-            background: #c41e3a;
+            background: #ff4d6d;
             color: #fff;
             text-decoration: none;
             padding: 18px 60px;
@@ -273,17 +276,17 @@
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.3);
+            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4);
         }
 
         .btn-download:hover {
-            background: #a01830;
+            background: #e63e5e;
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(196, 30, 58, 0.5);
+            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.6);
         }
 
         .btn-forum {
-            background: rgba(196, 30, 58, 0.05);
+            background: rgba(0, 0, 0, 0.5);
             color: #fff;
             text-decoration: none;
             padding: 18px 60px;
@@ -292,14 +295,14 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             border-radius: 40px;
-            border: 1px solid rgba(196, 30, 58, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s;
             cursor: pointer;
             backdrop-filter: blur(5px);
         }
 
         .btn-forum:hover {
-            background: rgba(196, 30, 58, 0.15);
+            background: rgba(0, 0, 0, 0.7);
             border-color: #ff4d6d;
         }
 
@@ -307,17 +310,18 @@
         .footer {
             margin-top: auto;
             padding-top: 25px;
-            border-top: 1px solid rgba(196, 30, 58, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 12px;
-            color: #a06666;
+            color: #fff;
             line-height: 1.6;
             max-width: 700px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .footer a {
-            color: #d0a0a0;
+            color: #fff;
             text-decoration: none;
-            border-bottom: 1px dotted rgba(196, 30, 58, 0.3);
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
             margin-right: 20px;
             cursor: pointer;
             transition: color 0.3s;
@@ -336,7 +340,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             z-index: 2000;
             justify-content: center;
@@ -348,14 +352,14 @@
         }
 
         .modal-content {
-            background: #1a0a0a;
-            border: 1px solid #c41e3a;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #ff4d6d;
             padding: 50px;
             max-width: 600px;
             width: 90%;
             border-radius: 8px;
             position: relative;
-            box-shadow: 0 20px 40px rgba(196, 30, 58, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
         .modal-content h2 {
@@ -367,7 +371,7 @@
         }
 
         .modal-content p, .modal-content ul {
-            color: #d0a0a0;
+            color: #fff;
             margin-bottom: 30px;
             line-height: 1.8;
             font-size: 15px;
@@ -379,11 +383,11 @@
 
         .modal-content li {
             margin-bottom: 8px;
-            color: #d0a0a0;
+            color: #fff;
         }
 
         .modal-close {
-            background: #c41e3a;
+            background: #ff4d6d;
             color: #fff;
             border: none;
             padding: 14px 40px;
@@ -397,9 +401,9 @@
         }
 
         .modal-close:hover {
-            background: #a01830;
+            background: #e63e5e;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(196, 30, 58, 0.3);
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
         }
 
         /* Адаптация */
