@@ -18,7 +18,7 @@
             overflow-x: hidden;
         }
 
-        /* Фоновое изображение в полную силу */
+        /* Фоновое изображение */
         body::before {
             content: '';
             position: fixed;
@@ -26,14 +26,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-           background-image: url('nagasaki.jpg');
+            background-image: url('nagasaki.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             z-index: -2;
         }
 
-        /* Легкое затемнение для читаемости текста (по желанию, можешь убрать) */
+        /* Легкое тонирование (меняй прозрачность по вкусу) */
         body::after {
             content: '';
             position: fixed;
@@ -41,7 +41,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный слой */
+            background: rgba(0, 0, 0, 0.3); /* 30% затемнения - изображение видно отлично */
             z-index: -1;
         }
 
@@ -57,7 +57,6 @@
             color: #fff;
         }
 
-        /* Навигация */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -104,14 +103,13 @@
             align-items: center;
         }
 
-        /* Переключатель языков */
         .language-selector {
             position: relative;
             display: inline-block;
         }
 
         .lang-btn {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: #fff;
             padding: 8px 18px;
@@ -128,7 +126,7 @@
         }
 
         .lang-btn:hover {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
             border-color: #ff4d6d;
         }
 
@@ -137,7 +135,7 @@
             position: absolute;
             top: 100%;
             right: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
@@ -161,12 +159,12 @@
         }
 
         .lang-dropdown a:hover {
-            background: rgba(255, 77, 109, 0.3);
+            background: rgba(255, 77, 109, 0.4);
             color: #fff;
         }
 
         .donate-btn {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             padding: 10px 22px;
             border-radius: 30px;
             color: #fff;
@@ -180,11 +178,10 @@
         }
 
         .donate-btn:hover {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
             border-color: #ff4d6d;
         }
 
-        /* Основной контент */
         .main-content {
             flex: 1;
             display: flex;
@@ -231,7 +228,7 @@
         }
 
         .season-pass {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 12px 28px;
             display: inline-block;
@@ -247,7 +244,7 @@
         }
 
         .season-pass:hover {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
             border-color: #ff4d6d;
         }
 
@@ -286,7 +283,7 @@
         }
 
         .btn-forum {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             color: #fff;
             text-decoration: none;
             padding: 18px 60px;
@@ -302,11 +299,10 @@
         }
 
         .btn-forum:hover {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
             border-color: #ff4d6d;
         }
 
-        /* Футер */
         .footer {
             margin-top: auto;
             padding-top: 25px;
@@ -332,7 +328,6 @@
             border-bottom-color: #ff4d6d;
         }
 
-        /* Модальные окна */
         .modal {
             display: none;
             position: fixed;
@@ -406,7 +401,6 @@
             box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
         }
 
-        /* Адаптация */
         @media (max-width: 1024px) {
             .container {
                 padding: 20px 30px;
@@ -456,7 +450,6 @@
             }
         }
 
-        /* Анимации */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -480,7 +473,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Навигация -->
         <div class="navbar">
             <div class="logo">GRANDIS RP</div>
             <div class="nav-links">
@@ -490,7 +482,6 @@
                 <a onclick="showPage('wiki')">WIKI</a>
             </div>
             <div class="nav-right">
-                <!-- Переключатель языков -->
                 <div class="language-selector">
                     <div class="lang-btn">
                         <span id="currentLang">EN</span>
@@ -506,30 +497,25 @@
             </div>
         </div>
 
-        <!-- Основной контент -->
         <div class="main-content">
             <div class="title-section">
                 <div class="project-name" id="projectName">GRANDIS</div>
             </div>
 
-            <!-- Онлайн -->
             <div class="online-section">
                 <span class="online-label" id="playersLabel">PLAYERS:</span>
-                <span class="online-number" id="onlineCount">1932</span>
+                <span class="online-number" id="onlineCount">1693</span>
             </div>
 
-            <!-- Seasonal Pass -->
             <div class="season-pass" onclick="showPage('season')">
                 <span id="seasonPassText">SEASON PASS</span> <span>→</span>
             </div>
 
-            <!-- Кнопки -->
             <div class="action-buttons">
                 <button class="btn-download" onclick="downloadLauncher()" id="downloadBtn">DOWNLOAD NOW</button>
                 <button class="btn-forum" onclick="showPage('forum')" id="forumBtn">FORUM</button>
             </div>
 
-            <!-- Футер -->
             <div class="footer" id="footerText">
                 Grandis RP is not affiliated with or endorsed by Take-Two, Rockstar North Interactive or any other copyright holder.
                 <br><br>
@@ -541,7 +527,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно -->
     <div class="modal" id="contentModal">
         <div class="modal-content">
             <h2 id="modalTitle">Заголовок</h2>
@@ -553,13 +538,11 @@
     </div>
 
     <script>
-        // Конфигурация
         const SERVER_CONFIG = {
-            ip: '123.45.67.89:30120',  // Замени на свой IP
+            ip: '123.45.67.89:30120',
             name: 'Grandis RP'
         };
 
-        // Языковые настройки
         const translations = {
             en: {
                 projectName: 'GRANDIS',
@@ -626,17 +609,14 @@
             }
         };
 
-        // Текущий язык
         let currentLanguage = 'en';
 
-        // Переключение языка
         function switchLanguage(lang) {
             currentLanguage = lang;
             document.getElementById('currentLang').textContent = lang.toUpperCase();
             updateContent();
         }
 
-        // Обновление контента
         function updateContent() {
             const t = translations[currentLanguage];
             
@@ -647,7 +627,6 @@
             document.getElementById('forumBtn').textContent = t.forumBtn;
             document.getElementById('closeBtn').textContent = t.closeBtn;
             
-            // Обновляем футер
             const footerLinks = document.querySelectorAll('.footer a');
             t.footerLinks.forEach((text, index) => {
                 if (footerLinks[index]) {
@@ -656,7 +635,6 @@
             });
         }
 
-        // Показать страницу
         function showPage(page) {
             const t = translations[currentLanguage].modal;
             const modal = document.getElementById('contentModal');
@@ -674,19 +652,16 @@
             modal.classList.add('show');
         }
 
-        // Закрыть модальное окно
         function closeModal() {
             document.getElementById('contentModal').classList.remove('show');
         }
 
-        // Закрыть по ESC
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
 
-        // Закрыть по клику на фон
         window.onclick = function(event) {
             const modal = document.getElementById('contentModal');
             if (event.target === modal) {
@@ -694,21 +669,17 @@
             }
         };
 
-        // Функция скачивания
         function downloadLauncher() {
             showPage('download');
         }
 
-        // Симуляция онлайн
         function updateOnline() {
             const randomOnline = Math.floor(Math.random() * (2500 - 1500 + 1)) + 1500;
             document.getElementById('onlineCount').textContent = randomOnline;
         }
 
-        // Обновляем онлайн каждые 30 секунд
         setInterval(updateOnline, 30000);
         updateOnline();
     </script>
 </body>
 </html>
-
