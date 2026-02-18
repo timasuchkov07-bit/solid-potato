@@ -99,6 +99,7 @@
             display: flex;
             gap: 25px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .language-selector {
@@ -161,80 +162,67 @@
             color: #fff;
         }
 
-        /* Новая кнопка Telegram с анимацией */
-.telegram-btn {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 10px 22px;
-    border-radius: 30px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.3s;
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    position: relative;
-    /* Мягкая пульсация */
-    animation: softPulse 2s infinite;
-    z-index: 1;
-}
+        /* ===== КНОПКА TELEGRAM ===== */
+        .telegram-btn {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 22px;
+            border-radius: 30px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            animation: softPulseTelegram 2s infinite;
+            z-index: 1;
+        }
 
-/* Анимация для иконки самолётика */
-.telegram-btn::before {
-    content: '✈️';
-    display: inline-block;
-    animation: flyAround 3s infinite;
-    filter: drop-shadow(0 0 5px #ff4d6d);
-    font-size: 14px;
-}
+        .telegram-btn::before {
+            content: '✈️';
+            display: inline-block;
+            animation: flyAround 3s infinite;
+            filter: drop-shadow(0 0 5px #ff4d6d);
+            font-size: 14px;
+            margin-right: 5px;
+        }
 
-/* Ключевые кадры для пульсации кнопки */
-@keyframes softPulse {
-    0%, 100% {
-        box-shadow: 0 0 5px rgba(255, 77, 109, 0.3);
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
-        border-color: #ff4d6d;
-    }
-}
+        @keyframes softPulseTelegram {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(255, 77, 109, 0.3);
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+                border-color: #ff4d6d;
+            }
+        }
 
-/* Ключевые кадры для полёта самолётика */
-@keyframes flyAround {
-    0% {
-        transform: translateX(0) translateY(0) rotate(0deg);
-    }
-    25% {
-        transform: translateX(3px) translateY(-2px) rotate(5deg);
-    }
-    50% {
-        transform: translateX(0) translateY(0) rotate(0deg);
-    }
-    75% {
-        transform: translateX(-3px) translateY(2px) rotate(-5deg);
-    }
-    100% {
-        transform: translateX(0) translateY(0) rotate(0deg);
-    }
-}
+        @keyframes flyAround {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(3px) translateY(-2px) rotate(5deg); }
+            50% { transform: translateX(0) translateY(0) rotate(0deg); }
+            75% { transform: translateX(-3px) translateY(2px) rotate(-5deg); }
+            100% { transform: translateX(0) translateY(0) rotate(0deg); }
+        }
 
-/* Эффект при наведении */
-.telegram-btn:hover {
-    animation: none; /* Отключаем пульсацию */
-    background: rgba(0, 0, 0, 0.7);
-    border-color: #ff4d6d;
-    transform: scale(1.05);
-}
+        .telegram-btn:hover {
+            animation: none;
+            background: rgba(0, 0, 0, 0.7);
+            border-color: #ff4d6d;
+            transform: scale(1.05);
+        }
 
-.telegram-btn:hover::before {
-    animation: none; /* Отключаем полёт самолётика */
-}
-<a href="https://t.me/grandis_rp" target="_blank" class="telegram-btn">📱 TELEGRAM</a>
+        .telegram-btn:hover::before {
+            animation: none;
+        }
+
+        /* ===== КНОПКА DONATION ALERTS ===== */
         .donate-btn {
             background: rgba(0, 0, 0, 0.4);
             padding: 10px 22px;
@@ -247,11 +235,66 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s;
             backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            animation: softPulseDonate 2s infinite;
+            z-index: 1;
+        }
+
+        .donate-btn::before {
+            content: '💎';
+            display: inline-block;
+            animation: shineMoney 3s infinite;
+            filter: drop-shadow(0 0 5px gold);
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+        @keyframes softPulseDonate {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+                border-color: gold;
+            }
+        }
+
+        @keyframes shineMoney {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            25% {
+                transform: scale(1.2) rotate(5deg);
+                opacity: 0.9;
+            }
+            50% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            75% {
+                transform: scale(1.2) rotate(-5deg);
+                opacity: 0.9;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
         }
 
         .donate-btn:hover {
+            animation: none;
             background: rgba(0, 0, 0, 0.7);
-            border-color: #ff4d6d;
+            border-color: gold;
+            transform: scale(1.05);
+        }
+
+        .donate-btn:hover::before {
+            animation: none;
         }
 
         .main-content {
@@ -330,6 +373,7 @@
             display: flex;
             gap: 25px;
             margin-bottom: 80px;
+            flex-wrap: wrap;
         }
 
         .btn-download {
@@ -474,67 +518,27 @@
         }
 
         @media (max-width: 1024px) {
-            .container {
-                padding: 20px 30px;
-            }
-            
-            .project-name {
-                font-size: 100px;
-            }
-            
-            .navbar {
-                flex-direction: column;
-                gap: 20px;
-                align-items: flex-start;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 20px;
-            }
-            
-            .nav-right {
-                flex-wrap: wrap;
-            }
+            .container { padding: 20px 30px; }
+            .project-name { font-size: 100px; }
+            .navbar { flex-direction: column; align-items: flex-start; }
+            .nav-links { flex-wrap: wrap; gap: 20px; }
+            .nav-right { justify-content: flex-start; }
         }
 
         @media (max-width: 768px) {
-            .project-name {
-                font-size: 60px;
-            }
-            
-            .online-number {
-                font-size: 48px;
-            }
-            
-            .online-label {
-                font-size: 14px;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-            }
-            
-            .btn-download, .btn-forum {
-                text-align: center;
-                padding: 15px 30px;
-            }
-            
-            .footer a {
-                display: inline-block;
-                margin-bottom: 10px;
-            }
+            .project-name { font-size: 60px; }
+            .online-number { font-size: 48px; }
+            .online-label { font-size: 14px; }
+            .action-buttons { flex-direction: column; }
+            .btn-download, .btn-forum { text-align: center; padding: 15px 30px; }
+            .footer a { display: inline-block; margin-bottom: 10px; }
+            .nav-right { flex-direction: column; align-items: flex-start; width: 100%; }
+            .telegram-btn, .donate-btn { width: 100%; justify-content: center; }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .project-name, .online-section, .season-pass, .action-buttons {
@@ -569,9 +573,10 @@
                         <a href="#" onclick="switchLanguage('pl'); return false;">POLSKI</a>
                     </div>
                 </div>
-                <!-- Кнопка Telegram в навигации -->
-                <a href="https://t.me/grandis_rp" target="_blank" class="telegram-btn">📱 TELEGRAM</a>
-                <a href="#" class="donate-btn" onclick="showPage('donate'); return false;">DONATE</a>
+                <!-- Кнопка Telegram с анимацией ✈️ -->
+                <a href="https://t.me/grandis_rp" target="_blank" class="telegram-btn">TELEGRAM</a>
+                <!-- Кнопка Donation Alerts с анимацией 💎 -->
+                <a href="https://www.donationalerts.com/r/pepsazy" target="_blank" class="donate-btn">DONATE</a>
             </div>
         </div>
 
@@ -594,7 +599,6 @@
                 <button class="btn-forum" onclick="showPage('forum')" id="forumBtn">FORUM</button>
             </div>
 
-            <!-- В футере добавлена ссылка TELEGRAM -->
             <div class="footer" id="footerText">
                 Grandis RP is not affiliated with or endorsed by Take-Two, Rockstar North Interactive or any other copyright holder.
                 <br><br>
@@ -638,10 +642,9 @@
                     disclaimer: { title: 'DISCLAIMER', content: 'Grandis RP is not affiliated with or endorsed by Take-Two Interactive, Rockstar North Interactive or any of their subsidiaries. All game content and materials used are properties of their respective owners.' },
                     forum: { title: 'FORUM', content: 'Our forum is currently under construction. Please join our Discord for communication.' },
                     wiki: { title: 'WIKI', content: 'Game guide and documentation will be available soon.' },
-                    donate: { title: 'DONATE', content: 'Support the project development. Donations will be used for server maintenance and development of new features.' },
+                    donate: { title: 'DONATE', content: 'Support the project development. Donations will be used for server maintenance and development of new features. You can donate via: https://www.donationalerts.com/r/pepsazy' },
                     season: { title: 'SEASON PASS', content: 'Season Pass system is in development. Stay tuned!' },
                     privacy: { title: 'PRIVACY POLICY', content: 'We respect your privacy. No personal data is collected without your consent.' },
-                    // В контактах добавлен Telegram
                     contact: { title: 'CONTACT US', content: 'Discord: discord.gg/grandisrp\nEmail: support@grandisrp.com\nTelegram: t.me/grandis_rp' },
                     download: { title: 'DOWNLOAD', content: 'Launcher will be available soon. For now, you can connect via IP: ' + SERVER_CONFIG.ip }
                 }
@@ -660,7 +663,7 @@
                     disclaimer: { title: 'ДИСКЛЕЙМЕР', content: 'Grandis RP не связан с Take-Two Interactive, Rockstar North Interactive или их дочерними компаниями. Все игровые материалы принадлежат их законным владельцам.' },
                     forum: { title: 'ФОРУМ', content: 'Наш форум находится в разработке. Для общения присоединяйтесь к нашему Discord.' },
                     wiki: { title: 'ВИКИ', content: 'Руководство по игре и документация появятся позже.' },
-                    donate: { title: 'ДОНАТ', content: 'Поддержите развитие проекта. Донаты пойдут на содержание сервера и разработку новых функций.' },
+                    donate: { title: 'ДОНАТ', content: 'Поддержите развитие проекта. Донаты пойдут на содержание сервера и разработку новых функций. Поддержать можно через: https://www.donationalerts.com/r/pepsazy' },
                     season: { title: 'СЕЗОННЫЙ ПРОПУСК', content: 'Система сезонных пропусков в разработке. Следите за новостями!' },
                     privacy: { title: 'КОНФИДЕНЦИАЛЬНОСТЬ', content: 'Мы уважаем вашу конфиденциальность. Личные данные не собираются без вашего согласия.' },
                     contact: { title: 'КОНТАКТЫ', content: 'Discord: discord.gg/grandisrp\nEmail: support@grandisrp.com\nTelegram: t.me/grandis_rp' },
@@ -681,7 +684,7 @@
                     disclaimer: { title: 'ZASTRZEŻENIA PRAWNE', content: 'Grandis RP nie jest powiązany z Take-Two Interactive, Rockstar North Interactive ani ich spółkami zależnymi. Wszystkie materiały z gry należą do ich prawnych właścicieli.' },
                     forum: { title: 'FORUM', content: 'Nasze forum jest w budowie. Dołącz do naszego Discorda aby porozmawiać.' },
                     wiki: { title: 'WIKI', content: 'Przewodnik po grze i dokumentacja wkrótce.' },
-                    donate: { title: 'WSPARCIE', content: 'Wesprzyj rozwój projektu. Środki zostaną przeznaczone na utrzymanie serwera i nowe funkcje.' },
+                    donate: { title: 'WSPARCIE', content: 'Wesprzyj rozwój projektu. Środki zostaną przeznaczone na utrzymanie serwera i nowe funkcje. Możesz wesprzeć przez: https://www.donationalerts.com/r/pepsazy' },
                     season: { title: 'PRZEPUSTKA SEZONOWA', content: 'System przepustek sezonowych w rozwoju. Bądź na bieżąco!' },
                     privacy: { title: 'POLITYKA PRYWATNOŚCI', content: 'Szanujemy Twoją prywatność. Dane osobowe nie są zbierane bez Twojej zgody.' },
                     contact: { title: 'KONTAKT', content: 'Discord: discord.gg/grandisrp\nEmail: support@grandisrp.com\nTelegram: t.me/grandis_rp' },
@@ -764,5 +767,3 @@
     </script>
 </body>
 </html>
-
-
