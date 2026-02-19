@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grandis RP | Nagasaki Style</title>
+    <!-- Favicon (иконка на вкладке браузера) -->
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         * {
             margin: 0;
@@ -287,7 +289,7 @@
             animation: none;
         }
 
-        /* Кнопка DISCORD */
+        /* Кнопка DISCORD с фиолетовой пульсацией */
         .discord-btn {
             background: rgba(0, 0, 0, 0.4);
             padding: 10px 22px;
@@ -303,18 +305,51 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            position: relative;
+            animation: softPulseDiscord 2s infinite;
+            z-index: 1;
         }
 
         .discord-btn::before {
             content: '💬';
             font-size: 14px;
             margin-right: 5px;
+            display: inline-block;
+            animation: discordIcon 3s infinite;
+        }
+
+        @keyframes softPulseDiscord {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(88, 101, 242, 0.3);
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(88, 101, 242, 0.8);
+                border-color: #5865F2;
+            }
+        }
+
+        @keyframes discordIcon {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 2px #5865F2);
+            }
+            50% {
+                transform: scale(1.1) rotate(5deg);
+                filter: drop-shadow(0 0 8px #5865F2);
+            }
         }
 
         .discord-btn:hover {
-            background: rgba(0, 0, 0, 0.7);
+            animation: none;
+            background: rgba(88, 101, 242, 0.2);
             border-color: #5865F2;
             transform: scale(1.05);
+        }
+
+        .discord-btn:hover::before {
+            animation: none;
+            transform: scale(1.1);
         }
 
         .main-content {
