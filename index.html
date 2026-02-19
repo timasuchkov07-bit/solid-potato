@@ -64,13 +64,18 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .logo {
-            font-size: 32px;
-            font-weight: 800;
-            letter-spacing: 4px;
-            color: #fff;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        /* ===== ЛОГОТИП ===== */
+        .logo-img {
+            height: 45px;
+            width: auto;
+            display: block;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 8px rgba(255, 77, 109, 0.5));
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px #ff4d6d);
         }
 
         .nav-links {
@@ -532,6 +537,7 @@
             box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
         }
 
+        /* Адаптация для мобильных */
         @media (max-width: 1024px) {
             .container { padding: 20px 30px; }
             .project-name { font-size: 100px; }
@@ -549,6 +555,7 @@
             .footer a { display: inline-block; margin-bottom: 10px; }
             .nav-right { flex-direction: column; align-items: flex-start; width: 100%; }
             .telegram-btn, .donate-btn, .discord-btn { width: 100%; justify-content: center; }
+            .logo-img { height: 35px; }
         }
 
         @keyframes fadeInUp {
@@ -569,13 +576,18 @@
 <body>
     <div class="container">
         <div class="navbar">
-            <div class="logo">GRANDIS RP</div>
+            <!-- ЛОГОТИП (БУКВА G) -->
+            <div class="logo">
+                <img src="logo.png" alt="Grandis RP" class="logo-img">
+            </div>
+            
             <div class="nav-links">
                 <a onclick="showPage('download')">DOWNLOAD</a>
                 <a onclick="showPage('forum')">FORUM</a>
                 <a onclick="showPage('about')">ABOUT</a>
                 <a onclick="showPage('wiki')">WIKI</a>
             </div>
+            
             <div class="nav-right">
                 <div class="language-selector">
                     <div class="lang-btn">
@@ -588,6 +600,7 @@
                         <a href="#" onclick="switchLanguage('pl'); return false;">POLSKI</a>
                     </div>
                 </div>
+                
                 <a href="https://t.me/grandis_rp" target="_blank" class="telegram-btn">TELEGRAM</a>
                 <a href="https://discord.gg/zqSm9KQw5t" target="_blank" class="discord-btn">DISCORD</a>
                 <a href="https://www.donationalerts.com/r/pepsazy" target="_blank" class="donate-btn">DONATE</a>
@@ -650,8 +663,6 @@
                 downloadBtn: 'DOWNLOAD NOW',
                 forumBtn: 'FORUM',
                 closeBtn: 'CLOSE',
-                footer: 'Grandis RP is not affiliated with or endorsed by Take-Two, Rockstar North Interactive or any other copyright holder.',
-                footerLinks: ['DISCLAIMER', 'ABOUT', 'PRIVACY', 'CONTACT'],
                 modal: {
                     about: { title: 'ABOUT GRANDIS RP', content: 'Grandis RP is a hardcore role-play project on GTA 5. We offer unique mechanics, stable economy and friendly community. Server opened in 2024.' },
                     disclaimer: { title: 'DISCLAIMER', content: 'Grandis RP is not affiliated with or endorsed by Take-Two Interactive, Rockstar North Interactive or any of their subsidiaries. All game content and materials used are properties of their respective owners.' },
@@ -671,8 +682,6 @@
                 downloadBtn: 'СКАЧАТЬ',
                 forumBtn: 'ФОРУМ',
                 closeBtn: 'ЗАКРЫТЬ',
-                footer: 'Grandis RP не аффилирован с Take-Two, Rockstar North Interactive или другими правообладателями.',
-                footerLinks: ['ДИСКЛЕЙМЕР', 'О ПРОЕКТЕ', 'КОНФИДЕНЦИАЛЬНОСТЬ', 'КОНТАКТЫ'],
                 modal: {
                     about: { title: 'О ПРОЕКТЕ GRANDIS RP', content: 'Grandis RP — это хардкорный ролевой проект на GTA 5. Мы предлагаем уникальные механики, стабильную экономику и дружное сообщество. Сервер открыт в 2024 году.' },
                     disclaimer: { title: 'ДИСКЛЕЙМЕР', content: 'Grandis RP не связан с Take-Two Interactive, Rockstar North Interactive или их дочерними компаниями. Все игровые материалы принадлежат их законным владельцам.' },
@@ -692,8 +701,6 @@
                 downloadBtn: 'POBIERZ',
                 forumBtn: 'FORUM',
                 closeBtn: 'ZAMKNIJ',
-                footer: 'Grandis RP nie jest powiązany z Take-Two, Rockstar North Interactive ani innymi właścicielami praw autorskich.',
-                footerLinks: ['ZASTRZEŻENIA', 'O PROJEKCIE', 'PRYWATNOŚĆ', 'KONTAKT'],
                 modal: {
                     about: { title: 'O GRANDIS RP', content: 'Grandis RP to hardkorowy projekt role-play w GTA 5. Oferujemy unikalne mechaniki, stabilną ekonomię i przyjazną społeczność. Serwer otwarty w 2024.' },
                     disclaimer: { title: 'ZASTRZEŻENIA PRAWNE', content: 'Grandis RP nie jest powiązany z Take-Two Interactive, Rockstar North Interactive ani ich spółkami zależnymi. Wszystkie materiały z gry należą do ich prawnych właścicieli.' },
