@@ -97,7 +97,7 @@
 
         .nav-right {
             display: flex;
-            gap: 25px;
+            gap: 15px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -162,7 +162,7 @@
             color: #fff;
         }
 
-        /* ===== КНОПКА TELEGRAM ===== */
+        /* Кнопка Telegram */
         .telegram-btn {
             background: rgba(0, 0, 0, 0.4);
             padding: 10px 22px;
@@ -222,7 +222,7 @@
             animation: none;
         }
 
-        /* ===== КНОПКА DONATION ALERTS ===== */
+        /* Кнопка DONATE */
         .donate-btn {
             background: rgba(0, 0, 0, 0.4);
             padding: 10px 22px;
@@ -264,26 +264,11 @@
         }
 
         @keyframes shineMoney {
-            0% {
-                transform: scale(1) rotate(0deg);
-                opacity: 1;
-            }
-            25% {
-                transform: scale(1.2) rotate(5deg);
-                opacity: 0.9;
-            }
-            50% {
-                transform: scale(1) rotate(0deg);
-                opacity: 1;
-            }
-            75% {
-                transform: scale(1.2) rotate(-5deg);
-                opacity: 0.9;
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
-                opacity: 1;
-            }
+            0% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.2) rotate(5deg); }
+            50% { transform: scale(1) rotate(0deg); }
+            75% { transform: scale(1.2) rotate(-5deg); }
+            100% { transform: scale(1) rotate(0deg); }
         }
 
         .donate-btn:hover {
@@ -295,6 +280,36 @@
 
         .donate-btn:hover::before {
             animation: none;
+        }
+
+        /* Кнопка DISCORD */
+        .discord-btn {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 22px;
+            border-radius: 30px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .discord-btn::before {
+            content: '💬';
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+        .discord-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+            border-color: #5865F2;
+            transform: scale(1.05);
         }
 
         .main-content {
@@ -533,7 +548,7 @@
             .btn-download, .btn-forum { text-align: center; padding: 15px 30px; }
             .footer a { display: inline-block; margin-bottom: 10px; }
             .nav-right { flex-direction: column; align-items: flex-start; width: 100%; }
-            .telegram-btn, .donate-btn { width: 100%; justify-content: center; }
+            .telegram-btn, .donate-btn, .discord-btn { width: 100%; justify-content: center; }
         }
 
         @keyframes fadeInUp {
@@ -573,9 +588,8 @@
                         <a href="#" onclick="switchLanguage('pl'); return false;">POLSKI</a>
                     </div>
                 </div>
-                <!-- Кнопка Telegram с анимацией ✈️ -->
                 <a href="https://t.me/grandis_rp" target="_blank" class="telegram-btn">TELEGRAM</a>
-                <!-- Кнопка Donation Alerts с анимацией 💎 -->
+                <a href="https://discord.gg/zqSm9KQw5t" target="_blank" class="discord-btn">DISCORD</a>
                 <a href="https://www.donationalerts.com/r/pepsazy" target="_blank" class="donate-btn">DONATE</a>
             </div>
         </div>
@@ -599,7 +613,7 @@
                 <button class="btn-forum" onclick="showPage('forum')" id="forumBtn">FORUM</button>
             </div>
 
-            <div class="footer" id="footerText">
+            <div class="footer">
                 Grandis RP is not affiliated with or endorsed by Take-Two, Rockstar North Interactive or any other copyright holder.
                 <br><br>
                 <a href="#" onclick="showPage('disclaimer'); return false;">DISCLAIMER</a>
@@ -607,6 +621,7 @@
                 <a href="#" onclick="showPage('privacy'); return false;">PRIVACY</a>
                 <a href="#" onclick="showPage('contact'); return false;">CONTACT</a>
                 <a href="https://t.me/grandis_rp" target="_blank">TELEGRAM</a>
+                <a href="https://discord.gg/zqSm9KQw5t" target="_blank">DISCORD</a>
             </div>
         </div>
     </div>
@@ -645,7 +660,7 @@
                     donate: { title: 'DONATE', content: 'Support the project development. Donations will be used for server maintenance and development of new features. You can donate via: https://www.donationalerts.com/r/pepsazy' },
                     season: { title: 'SEASON PASS', content: 'Season Pass system is in development. Stay tuned!' },
                     privacy: { title: 'PRIVACY POLICY', content: 'We respect your privacy. No personal data is collected without your consent.' },
-                    contact: { title: 'CONTACT US', content: 'Discord: discord.gg/grandisrp\nEmail: support@grandisrp.com\nTelegram: t.me/grandis_rp' },
+                    contact: { title: 'CONTACT US', content: 'Discord: https://discord.gg/zqSm9KQw5t\nEmail: support@grandisrp.com\nTelegram: https://t.me/grandis_rp' },
                     download: { title: 'DOWNLOAD', content: 'Launcher will be available soon. For now, you can connect via IP: ' + SERVER_CONFIG.ip }
                 }
             },
@@ -666,7 +681,7 @@
                     donate: { title: 'ДОНАТ', content: 'Поддержите развитие проекта. Донаты пойдут на содержание сервера и разработку новых функций. Поддержать можно через: https://www.donationalerts.com/r/pepsazy' },
                     season: { title: 'СЕЗОННЫЙ ПРОПУСК', content: 'Система сезонных пропусков в разработке. Следите за новостями!' },
                     privacy: { title: 'КОНФИДЕНЦИАЛЬНОСТЬ', content: 'Мы уважаем вашу конфиденциальность. Личные данные не собираются без вашего согласия.' },
-                    contact: { title: 'КОНТАКТЫ', content: 'Discord: discord.gg/grandisrp\nEmail: support@grandisrp.com\nTelegram: t.me/grandis_rp' },
+                    contact: { title: 'КОНТАКТЫ', content: 'Discord: https://discord.gg/zqSm9KQw5t\nEmail: support@grandisrp.com\nTelegram: https://t.me/grandis_rp' },
                     download: { title: 'СКАЧАТЬ', content: 'Лаунчер будет доступен позже. Пока вы можете подключиться по IP: ' + SERVER_CONFIG.ip }
                 }
             },
@@ -687,7 +702,7 @@
                     donate: { title: 'WSPARCIE', content: 'Wesprzyj rozwój projektu. Środki zostaną przeznaczone na utrzymanie serwera i nowe funkcje. Możesz wesprzeć przez: https://www.donationalerts.com/r/pepsazy' },
                     season: { title: 'PRZEPUSTKA SEZONOWA', content: 'System przepustek sezonowych w rozwoju. Bądź na bieżąco!' },
                     privacy: { title: 'POLITYKA PRYWATNOŚCI', content: 'Szanujemy Twoją prywatność. Dane osobowe nie są zbierane bez Twojej zgody.' },
-                    contact: { title: 'KONTAKT', content: 'Discord: discord.gg/grandisrp\nEmail: support@grandisrp.com\nTelegram: t.me/grandis_rp' },
+                    contact: { title: 'KONTAKT', content: 'Discord: https://discord.gg/zqSm9KQw5t\nEmail: support@grandisrp.com\nTelegram: https://t.me/grandis_rp' },
                     download: { title: 'POBIERZ', content: 'Launcher będzie dostępny wkrótce. Na razie możesz połączyć się przez IP: ' + SERVER_CONFIG.ip }
                 }
             }
@@ -710,13 +725,6 @@
             document.getElementById('downloadBtn').textContent = t.downloadBtn;
             document.getElementById('forumBtn').textContent = t.forumBtn;
             document.getElementById('closeBtn').textContent = t.closeBtn;
-            
-            const footerLinks = document.querySelectorAll('.footer a');
-            t.footerLinks.forEach((text, index) => {
-                if (footerLinks[index]) {
-                    footerLinks[index].textContent = text;
-                }
-            });
         }
 
         function showPage(page) {
